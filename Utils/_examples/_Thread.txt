@@ -1,0 +1,19 @@
+﻿https://assetstore.unity.com/packages/tools/ezthread-coroutine-replacement-easy-threads-62507
+
+
+
+using DualSenseX.Utils.Threading;
+
+private Threading.ThreadRunner _newThread;
+
+public void StartNewThread()
+{
+	_newThread = Threading.BeginThread(ThreadDoStuff);
+
+	Threading.EndThread(_newThread);
+}
+
+public void ThreadDoStuff()
+{
+	// Do stuff
+}

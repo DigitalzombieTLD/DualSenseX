@@ -1,0 +1,27 @@
+﻿https://assetstore.unity.com/packages/tools/animation/tween-55983
+
+Easing functions:
+https://easings.net/
+
+
+private static IEnumerator SuitSpriteFadeIn()
+{      
+            _suitSprite.color = _colorRedFade;
+
+            Color currentColor = _colorRedFade;
+            Color startColor = _colorRedFade;
+            Color midColor = _colorRed;
+            Color endCol = _colorYellow;
+
+            Action<ITween<Color>> fadeInSuite = (t) =>
+            {
+                _suitSprite.color = t.CurrentValue;
+            };
+
+            _suitSprite.gameObject.Tween("SuitSpriteFadeIn", currentColor, midColor, 1.2f, TweenScaleFunctions.QuinticEaseInOut, fadeInSuite)
+                .ContinueWith(new DualSenseX.Utils.Tween.ColorTween().Setup(midColor, endCol, 0.5f, TweenScaleFunctions.QuinticEaseInOut, fadeInSuite))
+                .ContinueWith(new DualSenseX.Utils.Tween.ColorTween().Setup(endCol, midColor, 0.5f, TweenScaleFunctions.QuinticEaseInOut, fadeInSuite))
+                .ContinueWith(new DualSenseX.Utils.Tween.ColorTween().Setup(midColor, endCol, 1.2f, TweenScaleFunctions.QuinticEaseInOut, fadeInSuite));
+                        
+            yield return null;
+}

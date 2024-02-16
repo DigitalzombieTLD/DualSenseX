@@ -1,0 +1,50 @@
+﻿https://github.com/rickyah/ini-parser
+
+
+thisIniParser = new FileIniDataParser();
+			settingsFile = FileSystem.settingsPath + "/" + parentMod.Info.Name + ".ini";
+
+iniData = new IniData();
+				thisIniParser.WriteFile(settingsFile, iniData);
+
+
+iniData = thisIniParser.ReadFile(settingsFile);
+
+
+///////////////////
+
+
+Getting Started
+
+All code examples expect the following using clauses:
+
+using IniParser;
+using IniParser.Model;
+
+
+///////////////////
+
+
+INI data is stored in nested dictionaries, so accessing the value associated to a key in a section is straightforward. Load the data using one of the provided methods.
+
+var parser = new FileIniDataParser();
+IniData data = parser.ReadFile("Configuration.ini");
+
+
+///////////////////
+
+
+Retrieve the value for a key inside of a named section. Values are always retrieved as strings.
+
+string useFullScreenStr = data["UI"]["fullscreen"];
+// useFullScreenStr contains "true"
+bool useFullScreen = bool.Parse(useFullScreenStr);
+
+
+/////////////////// 
+
+
+Modify the value in the dictionary, not the value retrieved, and save to a new file or overwrite.
+
+data["UI"]["fullscreen"] = "true";
+parser.WriteFile("Configuration.ini", data);
