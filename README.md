@@ -1,7 +1,7 @@
 # DualSenseX for TLD
 
-Adds support for the haptic triggers of the DualSense PS controller.
-Full configurable through the DualSenseXSettings.ini file and ingame settings.
+Adds support for the haptic triggers of the DualSense PS controller through the "DualSenseX" application by Paliverse (https://github.com/Paliverse/).
+Fully configurable through the DualSenseXSettings.ini file and ingame settings.
 
 ## Instructions
 
